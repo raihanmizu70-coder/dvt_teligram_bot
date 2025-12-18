@@ -137,6 +137,26 @@ def main():
     dp.add_handler(MessageHandler(Filters.photo, photo))
 
     updater.start_polling()
-    updater.idle()
+    updater    updater.idle
+    def addtask(update, context):
+    if update.effective_user.id != ADMIN_ID:
+        return
 
-main()
+    try:
+        title = context.args[0]
+        link = context.args[1]
+        amount = int(context.args[2])
+
+        tasks.append({
+            "title": title,
+            "link": link,
+            "amount": amount
+        })
+
+        save_data(data)
+        update.message.reply_text("✅ Task Added Successfully")
+
+    except:
+        update.message.reply_text(
+            "❌ Format:\n/addtask Title Link Amount"
+        )
