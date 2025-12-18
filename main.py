@@ -135,6 +135,8 @@ def main():
     dp.add_handler(CallbackQueryHandler(button, pattern="send"))
     dp.add_handler(CallbackQueryHandler(admin, pattern="ok_|no_"))
     dp.add_handler(MessageHandler(Filters.photo, photo))
+    dp.add_handler(CommandHandler("addtask", addtask))
+    
 
     updater.start_polling()
     updater    updater.idle
