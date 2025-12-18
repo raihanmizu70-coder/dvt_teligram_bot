@@ -1,4 +1,3 @@
-{
-  "users": {},
-  "tasks": []
-}
+data = load_data()
+users = data["users"]
+tasks = data["tasks"]
