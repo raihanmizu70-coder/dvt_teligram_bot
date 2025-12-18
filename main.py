@@ -1,3 +1,16 @@
+import threading
+from http.server import HTTPServer, BaseHTTPRequestHandler
+
+class Ping(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"OK")
+
+def run_ping():
+    HTTPServer(("0.0.0.0", 10000), Ping).serve_forever()
+
+threading.Thread(target=run_ping).start()
 from telegram import *
 from telegram.ext import *
 import os
